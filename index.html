@@ -286,7 +286,7 @@ html,body{
   <div class="embed-responsive embed-responsive-16by9">
      
    
-    <iframe src="https://player.vimeo.com/video/785430966?h=1b67238694&autoplay=1&loop=1&title=0&byline=0&portrait=0;conreol=0"  frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> 
+    <iframe src="https://player.vimeo.com/video/785430966?h=1b67238694"  frameborder="0" allow="autoplay; fullscreen; picture-in-picture"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>></iframe> 
     </div>
           
          </div>
@@ -304,15 +304,14 @@ html,body{
 // Modal script
 (function($) { 
 	 
-		$('a[data-modal-id]').click(function(e) {
-			e.preventDefault();
-			 
-    
-        // $('#myModal').find('video').get(0).play(); 
-        $('#myModal').find('iframe').get(0).play();
-        
-        // redirectToPsau();
-		}); 
+ 
+        var videoSrc = $("#myModal iframe").attr("src");
+
+$('#myModal').on('show.bs.modal', function () { // on opening the modal
+  // set the video to autostart
+  $("#myModal iframe").attr("src", videoSrc+"&amp;autoplay=1");
+});
+
         // let vid = document.querySelector("iframe");
    
 
